@@ -1,0 +1,46 @@
+# Number of words in the row ##
+train["num_words"] = train["column"].apply(lambda x: len(str(x).split()))
+
+
+ 
+
+##average og lenght  of  words
+train["mean_word_len"] = train["column"].apply(lambda x: np.mean([len(w) for w in str(x).split()]))
+
+
+ 
+
+train["num_unique_words"] = train["column"].apply(lambda x: len(set(str(x).split())))
+
+
+ 
+## Number of characters in the row ##
+train["num_chars"] = train["column"].apply(lambda x: len(str(x)))
+
+
+ 
+
+from nltk.corpus import stopwords
+ 
+## Number of stopwords in the row ##
+train["num_stopwords"] = train["column"].apply(lambda x: len([w for w in str(x).lower().split() if w in eng_stopwords]))
+
+ 
+
+import string
+## Number of punctuations in the row ##
+train["num_punctuations"] =train['column'].apply(lambda x: len([c for c in str(x) if c in string.punctuation]) )
+
+
+ 
+
+## Number of title case words in the row ##
+train["num_words_upper"] = train["column"].apply(lambda x: len([w for w in str(x).split() if w.isupper()]))
+
+
+ 
+## Average length of the words in the row ##
+train["mean_word_len"] = train["column"].apply(lambda x: np.mean([len(w) for w in str(x).split()]))
+
+ 
+
