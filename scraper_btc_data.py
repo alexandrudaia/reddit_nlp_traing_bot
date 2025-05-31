@@ -6,6 +6,14 @@ import os
 import time
 import signal
 import sys
+from binance.client import Client
+import pandas as pd
+from datetime import datetime, timedelta, timezone
+import logging
+import os
+import time
+import signal
+import sys
 
 # Set up logging
 logging.basicConfig(
@@ -23,7 +31,8 @@ class BitcoinDataCollector:
         """Collect the last 10,000 hours of historical Bitcoin data."""
         try:
             logger.info("Fetching historical data...")
-            end_time = datetime.now()
+            end_time = datetime.now() - timedelta(hours=3)
+			 
             start_time = end_time - timedelta(hours=limit)
 
             klines = self.binance_client.get_historical_klines(
